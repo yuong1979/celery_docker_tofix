@@ -1,0 +1,45 @@
+version: "3.10"
+   
+services:
+
+    redis:
+        image: redis:alpine
+        container_name: redis_container
+
+    flask:
+        build: .
+        volumes:
+            - .:/usr/src/app/flask_app
+        ports:
+            - "5000:5000"
+        image: flask
+        container_name: flask_container
+        command: python3 run.py --host=0.0.0.0 --port=5000
+
+        environment:
+            # - FLASK_ENV=development
+            # - FLASK_APP=app.py
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+
+
+    celery_worker:
+
+        restart: always
+        build: .
+        image: celery_worker
+        command: celery -A celery_worker.celery worker --loglevel=info --concurrency=2 # For deeper logs use DEBUG - combining worker with beat with -B
+
+        volumes:
+            - .:/usr/src/app/flask_app
+        container_name: celery_container_worker  # Specify the name for the container
+
+        environment:
+            # - DEBUG=1
+            # - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+
+        depends_on:
+            - redis
+
