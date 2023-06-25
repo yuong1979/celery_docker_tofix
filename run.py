@@ -29,15 +29,13 @@ if __name__ == "__main__":
 
 
 
-
-
 # ##########################################
 # ##### Running single Dockerfile (Flask) ##
 # ##########################################
 # 1. `cd docker_template/flask`
 # 2. `docker build --tag celery-flask1 .`
 # 3. `docker run --publish 5000:5000 celery-flask1`
-# 4. `docker exec -it faadc519169f1c8a8ab382477690b6afb793373aa9f547fe044a7f6143203739 /bin/bash`
+# 4. `docker exec -it 9cb1a375b364b2999ad90e5454664153b8bf1686c01dedc415526d86d411549f /bin/bash`
 
 # ##########################################
 # ##### Running entire Docker Compose ######
