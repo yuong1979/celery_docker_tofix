@@ -25,3 +25,8 @@ EXPOSE 5000
 # --bind 0.0.0.0:$PORT_APP \
 # --log-level DEBUG \
 # app:app
+
+
+
+
+# CMD gunicorn --bind 0.0.0.0:5000 wsgi:app
