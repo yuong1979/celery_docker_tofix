@@ -6,14 +6,14 @@ def make_celery(app_name=__name__):
     # broker = backend.replace("0", "1")
 
 
-    broker = 'pyamqp://guest:guest@localhost:5672//'
-    backend = 'rpc://guest:guest@localhost:5672//'
+    # broker = 'pyamqp://guest:guest@localhost:5672//'
+    # backend = 'rpc://guest:guest@localhost:5672//'
 
     # CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost:5672//'
     # CELERY_RESULT_BACKEND = 'rpc://guest:guest@localhost:5672//'
 
-    # broker = Config.CELERY_BROKER_URL
-    # backend = Config.CELERY_RESULT_BACKEND
+    broker = Config.CELERY_BROKER_URL
+    backend = Config.CELERY_RESULT_BACKEND
 
     return Celery(app_name, backend=backend, broker=broker)
 
