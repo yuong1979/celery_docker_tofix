@@ -41,3 +41,10 @@ services:
         depends_on:
             - redis
 
+
+    nginx:
+        build: ./nginx
+        ports:
+            - 1337:80
+        depends_on:
+            - flask
