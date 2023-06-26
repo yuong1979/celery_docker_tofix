@@ -7,6 +7,7 @@ from time import sleep
 def make_file(fname, content):
     with open(fname, "w") as f:
         f.write(content)
+    return fname, content
 
 
 @celery.task()
