@@ -6,8 +6,10 @@ from app import factory
 from app.config import Config
 import app
 
+app = factory.create_app(celery=app.celery)
+
 if __name__ == "__main__":
-    app = factory.create_app(celery=app.celery)
+    # app = factory.create_app(celery=app.celery)
 
     app.debug = Config.DEBUG
 
