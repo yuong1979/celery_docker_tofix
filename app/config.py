@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    DEBUG = False
+    DEBUG = True
     SECRET_KEY = 'very_very_secure_and_secret'
 
     if DEBUG:

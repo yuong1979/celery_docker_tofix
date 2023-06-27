@@ -18,6 +18,8 @@ EXPOSE 5000
 
 # command out the below if running docker-compose
 # CMD ["python3", "run.py", "--host", "0.0.0.0", "--port", "5000"]
+# CMD gunicorn --bind 0.0.0.0:5000 run:app
+
 
 
 # CMD gunicorn --workers $WORKERS \
@@ -27,4 +29,3 @@ EXPOSE 5000
 # app:app
 
 
-CMD gunicorn --bind 0.0.0.0:5000 run:app
